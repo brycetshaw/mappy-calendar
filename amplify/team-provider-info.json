@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-calendrdecemberreact-dev-121123-authRole",
+      "UnauthRoleArn": "arn:aws:iam::285091344673:role/amplify-calendrdecemberreact-dev-121123-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::285091344673:role/amplify-calendrdecemberreact-dev-121123-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-calendrdecemberreact-dev-121123-deployment",
+      "UnauthRoleName": "amplify-calendrdecemberreact-dev-121123-unauthRole",
+      "StackName": "amplify-calendrdecemberreact-dev-121123",
+      "StackId": "arn:aws:cloudformation:us-west-2:285091344673:stack/amplify-calendrdecemberreact-dev-121123/589a91e0-359b-11eb-a11d-0a3639d6e435",
+      "AmplifyAppId": "d142bihqhipm7g"
+    },
+    "categories": {
+      "auth": {
+        "calendrdecemberreact3165b9e6": {}
+      }
+    }
+  }
+}
