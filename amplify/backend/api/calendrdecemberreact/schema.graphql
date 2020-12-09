@@ -19,11 +19,9 @@
 #  content: String!
 #}
 type TimeLocation {
-  time: AWSDateTime
-  fixed: String
+  time: AWSDateTime!
   lat: Int
   long: Int
-  radius: Int
 }
 
 enum Code {
@@ -37,8 +35,8 @@ type Itinerary @model
 @auth(rules:[{allow: owner}])
 {
   id: ID!
-  isRoot: Boolean
-  name: String
+  isRoot: Boolean!
+  name: String!
   description: String
   start: TimeLocation!
   end: TimeLocation!

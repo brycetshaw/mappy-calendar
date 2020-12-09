@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-calendrdecemberreact-dev-121123-deployment",
-          "S3Key": "amplify-builds/getRoutePath-43384c38393146734442-build.zip"
+          "S3Key": "amplify-builds/getRoutePath-44347672556b7568567a-build.zip"
         }
       }
     },

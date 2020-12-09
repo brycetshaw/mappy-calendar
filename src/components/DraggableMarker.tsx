@@ -6,7 +6,7 @@ const refInitialValue= null;
 const center = [51.0816, -115.3302] as LatLngTuple
 
 const useDraggableMarker = () => {
-    const [position, setPosition] = useState(center)
+    const [position, setPosition] = useState(center as LatLngTuple | undefined)
     const DraggableMarker = () => {
         const [draggable, setDraggable] = useState(false)
         const markerRef = useRef(refInitialValue as any)
@@ -26,6 +26,7 @@ const useDraggableMarker = () => {
         }, [])
 
         return (
+            position !== undefined ?
             <Marker
                 draggable={draggable}
                 eventHandlers={eventHandlers}
@@ -39,6 +40,8 @@ const useDraggableMarker = () => {
         </span>
                 </Popup>
             </Marker>
+                :
+                null
         )
     }
     return {DraggableMarker, position, setPosition}

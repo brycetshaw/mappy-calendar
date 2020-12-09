@@ -14,14 +14,14 @@ export const schema = {
                     "name": "isRoot",
                     "isArray": false,
                     "type": "Boolean",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "name": {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "description": {
@@ -128,14 +128,7 @@ export const schema = {
                     "name": "time",
                     "isArray": false,
                     "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "fixed": {
-                    "name": "fixed",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "lat": {
@@ -151,16 +144,9 @@ export const schema = {
                     "type": "Int",
                     "isRequired": false,
                     "attributes": []
-                },
-                "radius": {
-                    "name": "radius",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
                 }
             }
         }
     },
-    "version": "b14c1e52ab5b19131ce56605e3263381"
+    "version": "76f48a2ff244f23568d0db1c82f7f311"
 };

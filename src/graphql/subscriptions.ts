@@ -11,17 +11,13 @@ export const onCreateItinerary = /* GraphQL */ `
       description
       start {
         time
-        fixed
         lat
         long
-        radius
       }
       end {
         time
-        fixed
         lat
         long
-        radius
       }
       code
       parentID
@@ -32,17 +28,13 @@ export const onCreateItinerary = /* GraphQL */ `
         description
         start {
           time
-          fixed
           lat
           long
-          radius
         }
         end {
           time
-          fixed
           lat
           long
-          radius
         }
         code
         parentID
@@ -53,13 +45,20 @@ export const onCreateItinerary = /* GraphQL */ `
           description
           code
           parentID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         children {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -72,12 +71,19 @@ export const onCreateItinerary = /* GraphQL */ `
           description
           code
           parentID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -93,17 +99,13 @@ export const onUpdateItinerary = /* GraphQL */ `
       description
       start {
         time
-        fixed
         lat
         long
-        radius
       }
       end {
         time
-        fixed
         lat
         long
-        radius
       }
       code
       parentID
@@ -114,17 +116,13 @@ export const onUpdateItinerary = /* GraphQL */ `
         description
         start {
           time
-          fixed
           lat
           long
-          radius
         }
         end {
           time
-          fixed
           lat
           long
-          radius
         }
         code
         parentID
@@ -135,13 +133,20 @@ export const onUpdateItinerary = /* GraphQL */ `
           description
           code
           parentID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         children {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -154,12 +159,19 @@ export const onUpdateItinerary = /* GraphQL */ `
           description
           code
           parentID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -175,17 +187,13 @@ export const onDeleteItinerary = /* GraphQL */ `
       description
       start {
         time
-        fixed
         lat
         long
-        radius
       }
       end {
         time
-        fixed
         lat
         long
-        radius
       }
       code
       parentID
@@ -196,17 +204,13 @@ export const onDeleteItinerary = /* GraphQL */ `
         description
         start {
           time
-          fixed
           lat
           long
-          radius
         }
         end {
           time
-          fixed
           lat
           long
-          radius
         }
         code
         parentID
@@ -217,13 +221,20 @@ export const onDeleteItinerary = /* GraphQL */ `
           description
           code
           parentID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         children {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -236,12 +247,19 @@ export const onDeleteItinerary = /* GraphQL */ `
           description
           code
           parentID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
       owner
