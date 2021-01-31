@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import activeSelectionReducer from './activeSelectionSlice';
+import calendarReducer from '../features/calendar/calendarSlice';
+import mapReducer from '../features/map/mapSlice';
+import editorReducer from '../features/editor/editorSlice'
 
 export const store = configureStore({
     reducer: {
-        active: activeSelectionReducer,
+        map: mapReducer,
+        calendar: calendarReducer,
+        editor: editorReducer
     },
 });
 

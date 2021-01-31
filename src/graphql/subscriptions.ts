@@ -6,25 +6,24 @@ export const onCreateItinerary = /* GraphQL */ `
   subscription OnCreateItinerary($owner: String!) {
     onCreateItinerary(owner: $owner) {
       id
-      isRoot
-      name
-      description
-      start {
-        time
-        lat
-        long
-      }
-      end {
-        time
-        lat
-        long
-      }
-      code
       parentID
+      title
       parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -36,29 +35,6 @@ export const onCreateItinerary = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -66,24 +42,26 @@ export const onCreateItinerary = /* GraphQL */ `
       children {
         items {
           id
-          isRoot
-          name
-          description
-          code
           parentID
-          _version
-          _deleted
-          _lastChangedAt
+          title
+          description
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      description
+      start {
+        time
+        lat
+        long
+      }
+      end {
+        time
+        lat
+        long
+      }
       createdAt
       updatedAt
       owner
@@ -94,25 +72,24 @@ export const onUpdateItinerary = /* GraphQL */ `
   subscription OnUpdateItinerary($owner: String!) {
     onUpdateItinerary(owner: $owner) {
       id
-      isRoot
-      name
-      description
-      start {
-        time
-        lat
-        long
-      }
-      end {
-        time
-        lat
-        long
-      }
-      code
       parentID
+      title
       parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -124,29 +101,6 @@ export const onUpdateItinerary = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -154,24 +108,26 @@ export const onUpdateItinerary = /* GraphQL */ `
       children {
         items {
           id
-          isRoot
-          name
-          description
-          code
           parentID
-          _version
-          _deleted
-          _lastChangedAt
+          title
+          description
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      description
+      start {
+        time
+        lat
+        long
+      }
+      end {
+        time
+        lat
+        long
+      }
       createdAt
       updatedAt
       owner
@@ -182,25 +138,24 @@ export const onDeleteItinerary = /* GraphQL */ `
   subscription OnDeleteItinerary($owner: String!) {
     onDeleteItinerary(owner: $owner) {
       id
-      isRoot
-      name
-      description
-      start {
-        time
-        lat
-        long
-      }
-      end {
-        time
-        lat
-        long
-      }
-      code
       parentID
+      title
       parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -212,29 +167,6 @@ export const onDeleteItinerary = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -242,24 +174,26 @@ export const onDeleteItinerary = /* GraphQL */ `
       children {
         items {
           id
-          isRoot
-          name
-          description
-          code
           parentID
-          _version
-          _deleted
-          _lastChangedAt
+          title
+          description
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      description
+      start {
+        time
+        lat
+        long
+      }
+      end {
+        time
+        lat
+        long
+      }
       createdAt
       updatedAt
       owner

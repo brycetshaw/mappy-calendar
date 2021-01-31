@@ -2,23 +2,28 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncItineraries = /* GraphQL */ `
-  query SyncItineraries(
-    $filter: ModelItineraryFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncItineraries(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
+export const getItinerary = /* GraphQL */ `
+  query GetItinerary($id: ID!) {
+    getItinerary(id: $id) {
+      id
+      parentID
+      title
+      parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -30,44 +35,22 @@ export const syncItineraries = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getItinerary = /* GraphQL */ `
-  query GetItinerary($id: ID!) {
-    getItinerary(id: $id) {
-      id
-      isRoot
-      name
+      children {
+        items {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
       description
       start {
         time
@@ -79,71 +62,6 @@ export const getItinerary = /* GraphQL */ `
         lat
         long
       }
-      code
-      parentID
-      parent {
-        id
-        isRoot
-        name
-        description
-        start {
-          time
-          lat
-          long
-        }
-        end {
-          time
-          lat
-          long
-        }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      children {
-        items {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -159,8 +77,20 @@ export const listItinerarys = /* GraphQL */ `
     listItinerarys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -172,35 +102,11 @@ export const listItinerarys = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
     }
   }
 `;

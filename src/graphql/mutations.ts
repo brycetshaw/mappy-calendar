@@ -9,25 +9,24 @@ export const createItinerary = /* GraphQL */ `
   ) {
     createItinerary(input: $input, condition: $condition) {
       id
-      isRoot
-      name
-      description
-      start {
-        time
-        lat
-        long
-      }
-      end {
-        time
-        lat
-        long
-      }
-      code
       parentID
+      title
       parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -39,29 +38,6 @@ export const createItinerary = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -69,24 +45,26 @@ export const createItinerary = /* GraphQL */ `
       children {
         items {
           id
-          isRoot
-          name
-          description
-          code
           parentID
-          _version
-          _deleted
-          _lastChangedAt
+          title
+          description
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      description
+      start {
+        time
+        lat
+        long
+      }
+      end {
+        time
+        lat
+        long
+      }
       createdAt
       updatedAt
       owner
@@ -100,25 +78,24 @@ export const updateItinerary = /* GraphQL */ `
   ) {
     updateItinerary(input: $input, condition: $condition) {
       id
-      isRoot
-      name
-      description
-      start {
-        time
-        lat
-        long
-      }
-      end {
-        time
-        lat
-        long
-      }
-      code
       parentID
+      title
       parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -130,29 +107,6 @@ export const updateItinerary = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -160,24 +114,26 @@ export const updateItinerary = /* GraphQL */ `
       children {
         items {
           id
-          isRoot
-          name
-          description
-          code
           parentID
-          _version
-          _deleted
-          _lastChangedAt
+          title
+          description
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      description
+      start {
+        time
+        lat
+        long
+      }
+      end {
+        time
+        lat
+        long
+      }
       createdAt
       updatedAt
       owner
@@ -191,25 +147,24 @@ export const deleteItinerary = /* GraphQL */ `
   ) {
     deleteItinerary(input: $input, condition: $condition) {
       id
-      isRoot
-      name
-      description
-      start {
-        time
-        lat
-        long
-      }
-      end {
-        time
-        lat
-        long
-      }
-      code
       parentID
+      title
       parent {
         id
-        isRoot
-        name
+        parentID
+        title
+        parent {
+          id
+          parentID
+          title
+          description
+          createdAt
+          updatedAt
+          owner
+        }
+        children {
+          nextToken
+        }
         description
         start {
           time
@@ -221,29 +176,6 @@ export const deleteItinerary = /* GraphQL */ `
           lat
           long
         }
-        code
-        parentID
-        parent {
-          id
-          isRoot
-          name
-          description
-          code
-          parentID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        children {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -251,24 +183,26 @@ export const deleteItinerary = /* GraphQL */ `
       children {
         items {
           id
-          isRoot
-          name
-          description
-          code
           parentID
-          _version
-          _deleted
-          _lastChangedAt
+          title
+          description
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      description
+      start {
+        time
+        lat
+        long
+      }
+      end {
+        time
+        lat
+        long
+      }
       createdAt
       updatedAt
       owner

@@ -9,19 +9,13 @@ export interface CalendarWindow {
         view: 'month' | 'week' | 'day' | 'agenda'
 }
 
-interface DraftEvent {
-    start?: string;
-    end?: string;
-    location?: {
-        start?: LatLngTuple;
-        end?: LatLngTuple;
-    }
-    title?: string;
-    description?: string;
-}
+type RecursivePartial<T> = {
+    [P in keyof T]?: RecursivePartial<T[P]>;
+};
+
 
 interface ActiveSelectionState {
-    draftEvent: Partial<Itinerary>;
+    draftEvent: RecursivePartial<Itinerary>;
     center: LatLngTuple;
     editablePoint: 'start'|'end'|null;
     calendarWindow: CalendarWindow;
@@ -51,20 +45,21 @@ export const activeSelectionSlice = createSlice({
         centerMap: (state, action: PayloadAction<LatLngTuple | undefined>) => {
             state.center = action.payload || state.center;
         },
-        setWindow: (state, action: PayloadAction<CalendarWindow>) => {
-            state.calendarWindow = {...state.calendarWindow,  ...action.payload}
-        }, setPoint: (state, action: PayloadAction<{index: 'start'|'end', point: LatLngTuple}>) => {
-            // @ts-ignore
-            state.draftEvent.location[action.payload.index] = action.payload.point
+        // setWindow: (state, action: PayloadAction<CalendarWindow>) => {
+        //     state.calendarWindow = {...state.calendarWindow,  ...action.payload}
+         setPoint: (state, action: PayloadAction<{index: 'start'|'end', point: LatLngTuple}>) => {
+            const [lat, lng] = action.payload.point;
+
+            state.draftEvent[action.payload.index] = {  ...state.draftEvent[action.payload.index], lat: lat, long: lng}
             state.editablePoint = null;
         }
     },
 });
 
-export const {setActive, unsetActive, centerMap, setWindow, setPoint} = activeSelectionSlice.actions;
-export const selectDraftEvent = (state: RootState) => state.active.draftEvent;
-export const selectMapCenter = (state: RootState) => state.active.center;
-export const selectCalendarWindow = (state: RootState) => state.active.calendarWindow;
-export const selectEditablePoint = (state: RootState) => state.active.editablePoint;
+export const {setActive, unsetActive, centerMap,  setPoint} = activeSelectionSlice.actions;
+// export const selectDraftEvent = (state: RootState) => state.active.draftEvent;
+// export const selectMapCenter = (state: RootState) => state.active.center;
+// export const selectCalendarWindow = (state: RootState) => state.active.calendarWindow;
+// export const selectEditablePoint = (state: RootState) => state.active.editablePoint;
 
 export default activeSelectionSlice.reducer;

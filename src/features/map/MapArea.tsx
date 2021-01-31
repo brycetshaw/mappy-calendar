@@ -5,7 +5,8 @@ import React, {useEffect} from "react";
 import useDraggableMarker from "./DraggableMarker";
 import {control, LatLngTuple, ZoomOptions} from "leaflet";
 import {useDispatch, useSelector} from "react-redux";
-import {selectEditablePoint, selectMapCenter, setActive, setPoint} from "../redux/activeSelectionSlice";
+import {selectEditablePoint, setActive, setPoint} from '../editor/editorSlice'
+import {centerMap, selectMapCenter} from './mapSlice';
 
 import ChangeView from "./ChangeView";
 // import AddMarkerToClick from "./AddMarkerToClick";
@@ -29,6 +30,13 @@ const AddMarkerToClick = () => {
 const MapArea = () => {
     const {DraggableMarker, position, setPosition} = useDraggableMarker();
     const center = useSelector(selectMapCenter);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((location ) => {
+            dispatch(centerMap([location.coords.latitude, location.coords.longitude]))
+        })
+    },[dispatch])
 
     return (
         <MapContainer center={center} zoom={13} scrollWheelZoom={true} style={{height: '100%', width: '100%'}}>

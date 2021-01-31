@@ -1,23 +1,18 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import '@aws-amplify/ui/dist/style.css'
 import 'antd/dist/antd.css'
 import {withAuthenticator, } from "aws-amplify-react";
 import { Layout, Row, Col} from 'antd';
-import MapArea from "./components/MapArea";
-import CalendarArea from "./components/CalendarArea";
-import {useDispatch} from "react-redux";
-import { centerMap } from './redux/activeSelectionSlice';
+import MapArea from "./features/map/MapArea";
+import Calendar from "./features/calendar/Calendar";
+import { useSelector} from "react-redux";
+import {selectDraftEvent} from "./features/editor/editorSlice";
+import EventForm from "./features/editor/EventForm";
 
 function App() {
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition((location ) => {
-            dispatch(centerMap([location.coords.latitude, location.coords.longitude]))
-        })
-    },[dispatch])
-
+    const draftEvent = useSelector(selectDraftEvent);
     return (
         <Layout>
             <Layout.Header>
@@ -26,7 +21,12 @@ function App() {
             <Layout.Content>
                 <Row style={{height: '100vh', width: '100vw'}}>
                     <Col span={12}><MapArea/></Col>
-                    <Col span={12}><CalendarArea/></Col>
+                    <Col span={12}>
+                        {Object.keys(draftEvent).length === 0 ?
+                            <Calendar/> :
+                            <EventForm/>
+                        }
+                    </Col>
                 </Row>
             </Layout.Content>
         </Layout>

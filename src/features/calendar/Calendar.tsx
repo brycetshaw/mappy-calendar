@@ -8,10 +8,11 @@ import fromUnixTime from 'date-fns/fromUnixTime';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import {CalendarWindow, setActive, unsetActive} from "../redux/activeSelectionSlice";
+import { setActive, unsetActive} from "../editor/editorSlice";
+import {CalendarWindow } from './calendarSlice';
 import {useDispatch} from "react-redux";
 import {v4 as uuid} from 'uuid';
-import {Itinerary} from "../models";
+import {Itinerary} from "../../models";
 import {DataStore} from "@aws-amplify/datastore";
 import { PubSub } from "aws-amplify";
 
@@ -34,9 +35,9 @@ const MyCalendar: any = (calendarWindow: CalendarWindow) => {
     const [eventsList, setEventsList] = useState([] as Array<Itinerary>)
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     console.log(eventsList)
-    // }, [eventsList])
+    useEffect(() => {
+        console.log(eventsList)
+    }, [])
 
 
     const onEventDrop = (data: any) => {
@@ -57,14 +58,16 @@ const MyCalendar: any = (calendarWindow: CalendarWindow) => {
     };
 
     const handleSelectEvent = (data: any) => {
-        dispatch(setActive(data.id))
+        console.log(data)
+        // dispatch(setActive(data.id))
     }
 
     const handleSelectSlot = (e: any) => {
-        const newEvent = {start: e.start.toISOString(), end: e.end.toISOString()}
+        const newEvent = {start: {time: e.start.toISOString()}, end: {time:e.end.toISOString()}}
         // setEventsList([...eventsList, newEvent])
+        console.log(newEvent)
         dispatch(unsetActive())
-        dispatch(setActive({...newEvent, editablePoint: null}))
+        dispatch(setActive({...newEvent}))
 
     }
 
@@ -75,9 +78,9 @@ const MyCalendar: any = (calendarWindow: CalendarWindow) => {
             defaultDate={calendarWindow.start ? fromUnixTime(calendarWindow.start) : new Date()}
             defaultView={calendarWindow.view}
             events={eventsList.map((d) => ({
-                start: d.start.time && Date.parse(d.start.time),
-                end: d.end.time && Date.parse(d.end.time),
-                title: d.name
+                start: Date.parse(d?.start.time),
+                end: Date.parse(d?.end.time),
+                title: d.title
             }))}
             localizer={localizer}
             onEventDrop={onEventDrop}

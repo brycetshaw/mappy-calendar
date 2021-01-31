@@ -1,11 +1,11 @@
 {
-    "AppSyncApiName": "calendrdecemberreact",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false,
-    "AuthCognitoUserPoolId": {
-        "Fn::GetAtt": [
-            "authcalendrdecemberreact3165b9e6",
-            "Outputs.UserPoolId"
-        ]
-    }
+  "AppSyncApiName": "calendrdecemberreact",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcalendrdecemberreact3165b9e6",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

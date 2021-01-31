@@ -10,19 +10,39 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "isRoot": {
-                    "name": "isRoot",
-                    "isArray": false,
-                    "type": "Boolean",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "name": {
-                    "name": "name",
+                "title": {
+                    "name": "title",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
+                },
+                "parent": {
+                    "name": "parent",
+                    "isArray": false,
+                    "type": {
+                        "model": "Itinerary"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "parentID"
+                    }
+                },
+                "children": {
+                    "name": "children",
+                    "isArray": true,
+                    "type": {
+                        "model": "Itinerary"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "parent"
+                    }
                 },
                 "description": {
                     "name": "description",
@@ -48,28 +68,6 @@ export const schema = {
                     },
                     "isRequired": true,
                     "attributes": []
-                },
-                "code": {
-                    "name": "code",
-                    "isArray": false,
-                    "type": {
-                        "enum": "Code"
-                    },
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "parent": {
-                    "name": "parent",
-                    "isArray": false,
-                    "type": {
-                        "model": "Itinerary"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "parentID"
-                    }
                 }
             },
             "syncable": true,
@@ -82,7 +80,7 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byParent",
+                        "name": "ByParent",
                         "fields": [
                             "parentID"
                         ]
@@ -110,16 +108,7 @@ export const schema = {
             ]
         }
     },
-    "enums": {
-        "Code": {
-            "name": "Code",
-            "values": [
-                "FIXED",
-                "FLEXIBLE",
-                "TRANSIT"
-            ]
-        }
-    },
+    "enums": {},
     "nonModels": {
         "TimeLocation": {
             "name": "TimeLocation",
@@ -148,5 +137,5 @@ export const schema = {
             }
         }
     },
-    "version": "76f48a2ff244f23568d0db1c82f7f311"
+    "version": "52f503a0aae10bc877241c47dfa67200"
 };

@@ -1,18 +1,20 @@
 import React, {useEffect} from "react";
 import {Input} from 'antd';
-import DatePicker from "./DatePicker";
+import DatePicker from "../../components/DatePicker";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    centerMap,
     selectDraftEvent,
     selectEditablePoint,
     setActive,
     unsetActive
-} from "../redux/activeSelectionSlice";
+} from "./editorSlice";
+
+import {centerMap} from '../map/mapSlice';
+
 import formatISO from 'date-fns/formatISO';
 import {DataStore} from '@aws-amplify/datastore';
-import {Itinerary, TimeLocation} from "../models";
-import useSetState from "../hooks/useSetState";
+import {Itinerary, TimeLocation} from "../../models";
+import useSetState from "../../hooks/useSetState";
 
 import {Button, Space} from 'antd';
 import {Typography} from 'antd';
@@ -27,35 +29,38 @@ const EventForm = () => {
     const state = useSelector(selectDraftEvent);
     const editablePoint = useSelector(selectEditablePoint);
 
+    useEffect(() => {
+        console.log(state)
+    }, [state])
 
     const handleSubmit = async () => {
-        const response = await DataStore.save(
-            new Itinerary({...state, isRoot: true, })
-        )
+        // const response = await DataStore.save(
+        //     new Itinerary({...state,  })
+        // )
 
-        console.log(response)
+        // console.log(response)
     }
 
     const handleLocationButtonClick = (key: 'start'|'end') => () => {
-
-        if(editablePoint !== null) {
-            dispatch(setActive({editablePoint:null}))
-        } else {
-            dispatch(setActive({editablePoint:key}));
-            state.location && state.location[key] && dispatch(centerMap(state.location[key]))
-        }
+        console.log('hi')
+        // if(editablePoint !== null) {
+        //     dispatch(setActive({editablePoint:null}))
+        // } else {
+        //     dispatch(setActive({editablePoint:key}));
+        //     state.location && state.location[key] && dispatch(centerMap(state.location[key]))
+        // }
     }
 
-    const determineLocationButtonStyle = (buttonKey: 'start'|'end') => {
-
-        if(editablePoint === buttonKey) {
-            return 'primary';
-        }
-        if(state.location && state.location[buttonKey]) {
-            return 'default'
-        }
-
-        return 'dashed'
+    const determineLocationButtonStyle = (buttonKey: 'start'|'end'):'primary' => {
+        return 'primary';
+        // if(editablePoint === buttonKey) {
+        //     return 'primary';
+        // }
+        // if(state.location[buttonKey]) {
+        //     return 'default'
+        // }
+        //
+        // return 'dashed'
     }
 
 
@@ -80,7 +85,7 @@ const EventForm = () => {
                     <Button type={determineLocationButtonStyle('start')} key='start' onClick={handleLocationButtonClick('start')} icon={<EnvironmentOutlined/>}/>Start
                     <Button type={determineLocationButtonStyle('end')} onClick={handleLocationButtonClick('end')} icon={<EnvironmentOutlined/>}/>End
                 </Space>
-                <RangePicker showTime={true} value={[dayjs(state.start), dayjs(state.end)]}/>
+                <RangePicker showTime={true} value={[dayjs(state?.start?.time), dayjs(state?.end?.time)]}/>
                 <Space>
                     <Typography.Text>
                         title:
